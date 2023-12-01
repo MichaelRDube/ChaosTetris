@@ -396,7 +396,7 @@ def refresh_background():
 
 
 def set_bricks(health):
-    for i in range(4, 20):
+    for i in range(5, 20):
         for j in range(10):
             if spaces[j][i] == False:
                 rando = random.randint(0, 30)
