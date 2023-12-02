@@ -388,7 +388,7 @@ def refresh_background():
    
     gameDisplay.blit(score_sprite, (525, 70))
    
-    display_message(582, 140, score, 25, deep_purple)
+    display_message(582, 140, score, 25, black)
    
     global show_wow_sprite
     if show_wow_sprite:
@@ -468,11 +468,16 @@ def choose_next_piece():
 
 def pause():
     print("Game paused")
+    pygame.draw.rect(gameDisplay, white, [0, 0, window_width, window_height])
+    display_message(window_width//2, window_height//2, "PAUSED", 40, black)
+    pygame.display.update()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 print("Game unpaused")
-                return
+                return False
+            elif event.type == pygame.QUIT:
+                return True
 
 def game_loop():
     global next_piece
@@ -510,8 +515,8 @@ def game_loop():
                 if mouse_x < 10 and mouse_y < 20 and type(spaces[mouse_x][mouse_y]) == Brick:
                     spaces[mouse_x][mouse_y].bonk()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p:
-                    pause()
+                if event.key == pygame.K_p or event.key == pygame.K_x:
+                    gameExit = pause()
                 elif event.key == pygame.K_d:
                     if t1.can_translate(right):
                         t1.translate(right)
