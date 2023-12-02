@@ -15,6 +15,7 @@ yellow = (255, 255, 0)
 teal = (0, 255, 255)
 orange = (255, 165, 0)
 brown = (150, 0, 0)
+dark_grey = (90, 90, 90)
 window_width = 800
 window_height = 700
 up = [0, -1]
@@ -100,8 +101,7 @@ class Block:
 class Brick(Block):
     health = 1
     def __init__(self, x, y, health):
-        self.filler_color = brown
-        print("setting color to brown")
+        self.filler_color = dark_grey
         self.space_x = x
         self.space_y = y
         spaces[x][y] = self
@@ -405,7 +405,7 @@ def set_bricks(health):
                 rando = random.randint(0, 30)
                 print("rando = ", rando)
                 if rando == 0:
-                    Brick(j, i, health)
+                    Brick(j, i, random.randint(1, health))
 
 def choose_next_piece():
     global next_piece
@@ -572,6 +572,7 @@ display_message(405, 650, "Great game!  Press any button to close", 35, black)
 pygame.display.update()
 
 pygame.time.delay(1500)
+pygame.event.get()
 
 stay = True
 while stay:
