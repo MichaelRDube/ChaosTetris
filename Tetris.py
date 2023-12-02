@@ -476,7 +476,7 @@ def pause():
     pygame.display.update()
     while True:
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and (event.key == pygame.K_p or event.key == pygame.K_x):
+            if event.type == pygame.KEYDOWN and (event.key == pygame.K_p or event.key == pygame.K_w):
                 print("Game unpaused")
                 return False
             elif event.type == pygame.QUIT:
@@ -518,7 +518,7 @@ def game_loop():
                 if mouse_x < 10 and mouse_y < 20 and type(spaces[mouse_x][mouse_y]) == Brick:
                     spaces[mouse_x][mouse_y].bonk()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p or event.key == pygame.K_x:
+                if event.key == pygame.K_p or event.key == pygame.K_w:
                     gameExit = pause()
                 elif event.key == pygame.K_d:
                     if t1.can_translate(right):
