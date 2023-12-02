@@ -340,6 +340,7 @@ def render_spaces():
        
        
 def check_spaces():
+    count = 0
     for i in range(20):
         for j in range(10):
             if spaces[j][i] == False or type(spaces[j][i]) == Brick:
@@ -348,11 +349,13 @@ def check_spaces():
             if j == 9:
                 print("line", i, "complete")
                 global score
-                score += 10
-                global show_wow_sprite
-                show_wow_sprite = True
-                global wow_message
-                pygame.time.set_timer(wow_message, 2000)
+                score += 10 + 5*count
+                count += 1
+                if count == 4:
+                    global show_wow_sprite
+                    show_wow_sprite = True
+                    global wow_message
+                    pygame.time.set_timer(wow_message, 2000)
                 for k in range(10):
                     spaces[k][i] = False
                 shift_blocks_down(i)
@@ -473,7 +476,7 @@ def pause():
     pygame.display.update()
     while True:
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+            if event.type == pygame.KEYDOWN and (event.key == pygame.K_p or event.key == pygame.K_x):
                 print("Game unpaused")
                 return False
             elif event.type == pygame.QUIT:
