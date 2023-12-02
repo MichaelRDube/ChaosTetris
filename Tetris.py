@@ -466,6 +466,14 @@ def choose_next_piece():
    
 
 
+def pause():
+    print("Game paused")
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                print("Game unpaused")
+                return
+
 def game_loop():
     global next_piece
     global brick_health
@@ -502,7 +510,9 @@ def game_loop():
                 if mouse_x < 10 and mouse_y < 20 and type(spaces[mouse_x][mouse_y]) == Brick:
                     spaces[mouse_x][mouse_y].bonk()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_d:
+                if event.key == pygame.K_p:
+                    pause()
+                elif event.key == pygame.K_d:
                     if t1.can_translate(right):
                         t1.translate(right)
                 elif event.key == pygame.K_a:
@@ -553,7 +563,7 @@ display_message(405, 80, score, 25, black)
 display_message(405, 650, "Great game!  Press any button to close", 35, black)
 pygame.display.update()
 
-pygame.time.delay(1000)
+pygame.time.delay(1500)
 
 stay = True
 while stay:
