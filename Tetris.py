@@ -1,4 +1,5 @@
 import pygame
+import os
 from pygame import mixer
 import random
 
@@ -50,7 +51,17 @@ pygame.draw.rect(gameDisplay, white, [0, 0, window_width, window_height])
 pygame.display.set_caption("Tetris")
 clock = pygame.time.Clock()
 
+#import high scores
+high_scores = "---\n---\n---\n---\n---"
+if os.path.isfile('Assets/high_scores.txt'):
+    with open('Assets/high_scores.txt', 'r') as file:
+            high_scores = file.read()
+else:
+    print(f"Assets/high_scores.txt does not exist.")
+    
 
+high_scores = high_scores.split('\n')
+print('high scores:\n' + str(high_scores))
 
 
 class Block:
@@ -396,6 +407,14 @@ def refresh_background():
     global show_wow_sprite
     if show_wow_sprite:
         gameDisplay.blit(wow_sprite, (500, 450))
+        
+        
+    #high scores
+    display_message(582, 460, 'HIGH SCORES:', 30, black)
+    line = 0
+    for high_score in high_scores:
+        display_message(582, 510 + line, high_score, 25, black)
+        line += 35
 
 
 def set_bricks(health):
@@ -580,4 +599,34 @@ while stay:
         if event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.QUIT:
             stay = False
            
+
+
+for i in range(len(high_scores)):
+    try:
+        if score > int(high_scores[i]):
+            print('greater score found')
+            for j in range(len(high_scores)-1, i, -1):
+                high_scores[j] = high_scores[j-1]
+            high_scores[i] = score
+            break
+    except:
+        print("non-numerical high score replaced")
+        for j in range(len(high_scores)-1, i, -1):
+            high_scores[j] = high_scores[j-1]
+        print('before', high_scores[i])
+        high_scores[i] = score
+        print('after', high_scores[i])
+        break
+print(high_scores)
+
+high_scores_string = ""
+for i in range(len(high_scores)-1):
+    high_scores_string += str(high_scores[i]) + '\n'
+high_scores_string += str(high_scores[-1])
+
+if os.path.isfile('Assets/high_scores.txt'):
+    print('writing high scores to file')
+    with open('Assets/high_scores.txt', 'w') as file:
+        # Write the new content to the file
+        file.write(high_scores_string)
 pygame.quit()
