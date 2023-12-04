@@ -508,7 +508,7 @@ def game_loop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 gameExit = True
-            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            elif event.type == pygame.MOUSEBUTTONDOWN and (event.button == 1 or event.button == 3):
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 mouse_x -= spaces_window_x
                 mouse_x //= Block.block_size
