@@ -9,4 +9,4 @@ urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main
 urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/wow.png', 'Assets/wow.png')
 
 #bring in the executable
-urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Minimal%20Package/Tetris.exe', 'Tetris.exe')
+urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/dist/Tetris.exe', 'Tetris.exe')
