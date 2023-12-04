@@ -1,5 +1,5 @@
 Directions for download:
-1.  Click on update.exe
+1.  Click on update.exe in main folder
 2.  Download raw file into folder of choice
 3.  Run update.exe
 4.  Tetris.exe and relevant files will appear in the same folder with update.exe
