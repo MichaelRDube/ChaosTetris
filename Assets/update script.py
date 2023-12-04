@@ -4,9 +4,9 @@ import urllib.request, sys, os
 #    os.mkdir("Assets")
     
 #bring in assets
-urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/game_over.png', 'game_over.png')
-urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/score.png', 'score.png')
-urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/wow.png', 'wow.png')
+urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/game_over.png', 'Assets/game_over.png')
+urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/score.png', 'Assets/score.png')
+urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Assets/wow.png', 'Assets/wow.png')
 
 #bring in the executable
 urllib.request.urlretrieve('https://raw.github.com/MichaelRDube/ChaosTetris/main/Minimal%20Package/Tetris.exe', '../Tetris.exe')
