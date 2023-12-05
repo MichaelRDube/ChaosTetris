@@ -21,4 +21,5 @@ S - Down
 Q - Rotate Left
 E - Rotate Right
 SPACE - Pause
+RMB/LMB - Clear Bricks
 

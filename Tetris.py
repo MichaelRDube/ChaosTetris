@@ -387,26 +387,26 @@ def display_message(x, y, message, size, color):
    
    
 def refresh_background():
+    #white background
     pygame.draw.rect(gameDisplay, white, [0, 0, window_width, window_height])
    
+    #spaces window
     pygame.draw.rect(gameDisplay, black, [spaces_window_x-10, spaces_window_y-10, 10*Block.block_size+20, 20*Block.block_size+20])
     pygame.draw.rect(gameDisplay, white, [spaces_window_x, spaces_window_y, 10*Block.block_size, 20*Block.block_size])
    
+    #next window
     pygame.draw.rect(gameDisplay, black, [preview_x - 5, preview_y - 5, 4*Block.block_size+10, 4*Block.block_size+10])
     pygame.draw.rect(gameDisplay, white, [preview_x, preview_y, 4*Block.block_size, 4*Block.block_size])
     display_message(585, preview_y - 30, "Next:", 25, black)
     for block in next_preview:
         block.plot(block.space_x, block.space_y)
        
+    
     display_message(582, 195, "Level: " + str(brick_health//10), 25, black)
    
     gameDisplay.blit(score_sprite, (525, 70))
    
     display_message(582, 140, score, 25, black)
-   
-    global show_wow_sprite
-    if show_wow_sprite:
-        gameDisplay.blit(wow_sprite, (500, 450))
         
         
     #high scores
@@ -415,6 +415,11 @@ def refresh_background():
     for high_score in high_scores:
         display_message(582, 510 + line, high_score, 25, black)
         line += 35
+        
+    #4-line clear
+    global show_wow_sprite
+    if show_wow_sprite:
+        gameDisplay.blit(wow_sprite, (500, 450))
 
 
 def set_bricks(health):
